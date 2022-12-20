@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,user-scalable=no,width=device-width">
+    <link rel="stylesheet" href="./static/Home.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Klee+One:wght@600&display=swap" rel="stylesheet">
+    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
+    <link id="u-page-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i|Playfair+Display:400,400i,500,500i,600,600i,700,700i,800,800i,900,900i|Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i">
+</head>
+<body style="background-color:white ;">
+<!-- <body style="background-color:rgba(235, 235, 235, 0.726) ;"> -->
+
+    <header>
+        <div class="u-sheet">
+            <ul class="menuContainer">
+                <li class="nav"><a href="#contact">Contact</a></li>
+                <!-- <li class="nav"><a href="/Schedule.html">Schedule</a></li> -->
+                <li class="nav"><a href="#home">Home</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <section class="contentArea u-sheet">
+        <div class="contentPosition">
+            <h5 class="text1">About us</h5>
+            <h2 class="text2">Collaboration</h2>
+            <div class="imgStyle" data-image-width="1000" data-image-height="1500"></div>
+            <p class="text3"> Article evident arrived express highest men did boy. Mistress sensible entirely am so. Quick can manor smart money hopes worth too. Comfort produce husband boy her had hearing.</p>
+        </div>
+        <div class="contactMe">
+            <a class="firstIcon" id="contact"></a>
+            <a class="secondIcon" href="#contact"></a>
+            <a class="thirdIcon" href="#contact"></a>
+            <a class="forthIcon" href="#contact"></a>
+        </div>
+    </section>
+
+
+    <section class="u-sheet">
+        <h2 class="title2" onclick="editCheck(1)">Schedule</h2>
+        <div class="liner"></div>
+        <div hidden id="data">{{dataJson}}</div>
+        <div id='schedule'>
+        <script>
+            var time = [];
+
+            for (var i = 18; i <= 44; i++) {
+                var n = i%2==0 ? i/2+':00' : (i+1)/2-1+':30';
+                if( n<10 ) 
+                n = '0' + n;
+                time.push(n);
+            }
+
+            function editCheck( pass ){
+                if ( pass == 1 ) {
+                    let text;
+                    let password = prompt("神秘數字 : ", "");
+                    if (password != '0429') {
+                        createTable()
+                    } else if (password == '0429') {
+                        createTable(mode=1);
+                    }
+                }
+
+            }
+            
+            function createTable(){
+                const week = [' ','週一','週二','週三','週四','週五','週六','週日'];
+                let body           = document.body;
+                let scheduleDiv    = document.createElement('div');
+                    scheduleDiv.id = 'scheduleDiv';
+                
+                let stick           = document.createElement('table');
+                    stick.className = 'tableContainer sticky';
+                let tr           = stick.insertRow();
+                    tr.className = 'tableHead';
+                
+                for ( let head = 0; head < 8; head++ ){
+                    let td = tr.insertCell();
+                        td.appendChild( document.createTextNode( week[head] ));
+
+                        if ( head == 0 ) {
+                            td.style.width='13.1%';
+                        }
+                }
+
+                let tbl  = document.createElement('table');
+                    tbl.className = 'tableContainer';
+
+                for(let i = 0; i < 27; i++){
+                    let tr = tbl.insertRow();
+
+                    for(let j = 0; j < 8; j++){
+                        let td = tr.insertCell();
+
+                        if ( j == 0 ) {
+                            td.className = 'firstRow';
+                            td.appendChild(document.createTextNode(time[i]));
+                        }
+                        if ( j > 0 ){
+                            td.className = 'restRow';
+                        }
+                        td.style.border="1px solid transparent";
+                    }
+                }
+                document.getElementById('schedule').appendChild(scheduleDiv);
+                scheduleDiv.appendChild(stick);
+                scheduleDiv.appendChild(tbl);
+            }
+            createTable();
+        </script>
+        </div>
+
+    </section>
+
+</body>
+</html>

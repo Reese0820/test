@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,user-scalable=no,width=device-width">
+    <link rel="stylesheet" href="./static/Home.css">
+    <script src="./static/function.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Klee+One:wght@600&display=swap" rel="stylesheet">
+    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
+    <link id="u-page-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i|Playfair+Display:400,400i,500,500i,600,600i,700,700i,800,800i,900,900i|Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i">
+</head>
+<body style="background-color:white ;">
+<!-- <body style="background-color:rgba(235, 235, 235, 0.726) ;"> -->
+
+    <header>
+        <div class="u-sheet">
+            <ul class="menuContainer">
+                <li class="nav"><a href="/Home#contact">Contact</a></li>
+                <li class="nav"><a href="/Schedule">Schedule</a></li>
+                <li class="nav"><a href="/Home">Home</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <section class="u-sheet sectionStyle">
+        <h2 class="text1" style="font-size: 50px;" onclick="editCheck(1)">Schedule</h2>
+        <div class="liner"></div>
+        <div hidden id="data">{{dataJson}}</div>
+        <div id='schedule'>
+            <script>
+                createTable();
+            </script>
+        </div>
+
+    </section>
+    <footer id="footer">
+    </footer>
+
+</body>
+</html>
